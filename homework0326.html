@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Review Quiz - Past Simple</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 20px auto; padding: 20px; background-color: #f4f7f6; }
+        .container { background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 30px; border-left: 5px solid #2980b9; padding-left: 10px; }
+        .section { margin-bottom: 25px; }
+        .question { margin-bottom: 15px; }
+        input[type="text"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px; font-size: 16px; }
+        select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .btn-container { text-align: center; margin-top: 40px; }
+        button { background-color: #27ae60; color: white; padding: 15px 40px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; transition: background 0.3s; }
+        button:hover { background-color: #219150; }
+        .correct { border-color: #27ae60 !important; background-color: #e8f5e9; color: #2e7d32; }
+        .incorrect { border-color: #e74c3c !important; background-color: #fdeaea; color: #c62828; }
+        .feedback { font-size: 14px; margin-left: 10px; font-weight: bold; }
+        
+        /* Bảng điểm mới */
+        #result-summary { 
+            display: none; 
+            text-align: center; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            border: 2px solid #3498db; 
+            background-color: #ebf5fb; 
+        }
+        #score-display { font-size: 28px; font-weight: bold; color: #2c3e50; }
+        #grade-msg { font-size: 20px; margin-top: 10px; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📝 English Review Quiz</h1>
+    <p style="text-align: center;"><strong>Past Simple & To Be (Was/Were)</strong></p>
+
+    <div id="result-summary">
+        <div id="score-display"></div>
+        <div id="grade-msg"></div>
+    </div>
+
+    <div class="section">
+        <h2>Part 1: Choose the correct word (正しい単語を選ぼう)</h2>
+        <div class="question">1. This letter 
+            <select class="quiz-item" data-answer="arrived">
+                <option value="">--Select--</option>
+                <option value="arrive">arrive</option>
+                <option value="arrived">arrived</option>
+            </select> for you yesterday.
+        </div>
+        <div class="question">2. I 
+            <select class="quiz-item" data-answer="made">
+                <option value="">--Select--</option>
+                <option value="make">make</option>
+                <option value="made">made</option>
+            </select> you a blue sweater last week.
+        </div>
+        <div class="question">3. We 
+            <select class="quiz-item" data-answer="were">
+                <option value="">--Select--</option>
+                <option value="was">was</option>
+                <option value="were">were</option>
+            </select> pen pals seven years ago.
+        </div>
+        <div class="question">4. My mother 
+            <select class="quiz-item" data-answer="gave">
+                <option value="">--Select--</option>
+                <option value="give">give</option>
+                <option value="gave">gave</option>
+            </select> me a present for my birthday.
+        </div>
+        <div class="question">5. They 
+            <select class="quiz-item" data-answer="were">
+                <option value="">--Select--</option>
+                <option value="are">are</option>
+                <option value="were">were</option>
+            </select> in London three days ago.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Part 2: Word Order - "Person + Thing"</h2>
+        <div class="question">6. ( made / I / you / this sweater )<br>
+            → <input type="text" class="quiz-item" data-answer="I made you this sweater" placeholder="Your answer...">
+        </div>
+        <div class="question">7. ( gave / He / me / the letter )<br>
+            → <input type="text" class="quiz-item" data-answer="He gave me the letter" placeholder="Your answer...">
+        </div>
+        <div class="question">8. ( buy / Will / you / me / a drink )?<br>
+            → <input type="text" class="quiz-item" data-answer="Will you buy me a drink?" placeholder="Your answer...">
+        </div>
+        <div class="question">9. ( show / Please / us / the photo )<br>
+            → <input type="text" class="quiz-item" data-answer="Please show us the photo" placeholder="Your answer...">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Part 3: Using "AGO" (～前)</h2>
+        <div class="question">10. 3日前に、荷物が届きました。<br>
+            The parcel arrived 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="three"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="days"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="ago">.
+        </div>
+        <div class="question">11. 私たちは10年前に会いました。<br>
+            We met 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="ten"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="years"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="ago">.
+        </div>
+        <div class="question">12. 5分前、彼はここにいました。<br>
+            He was here 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="five"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="minutes"> 
+            <input type="text" class="quiz-item" style="width: 60px;" data-answer="ago">.
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>📘 Past Simple: TO BE Practice</h2>
+        <table>
+            <tr>
+                <th>Subject (主語)</th>
+                <th>Past Form</th>
+                <th>Negative</th>
+            </tr>
+            <tr>
+                <td>I</td>
+                <td><input type="text" class="quiz-item" data-answer="was" style="width: 80px;"></td>
+                <td>wasn't</td>
+            </tr>
+            <tr>
+                <td>You</td>
+                <td><input type="text" class="quiz-item" data-answer="were" style="width: 80px;"></td>
+                <td>weren't</td>
+            </tr>
+            <tr>
+                <td>He / She / It</td>
+                <td><input type="text" class="quiz-item" data-answer="was" style="width: 80px;"></td>
+                <td><input type="text" class="quiz-item" data-answer="wasn't" style="width: 80px;"></td>
+            </tr>
+            <tr>
+                <td>We</td>
+                <td><input type="text" class="quiz-item" data-answer="were" style="width: 80px;"></td>
+                <td><input type="text" class="quiz-item" data-answer="weren't" style="width: 80px;"></td>
+            </tr>
+            <tr>
+                <td>They</td>
+                <td><input type="text" class="quiz-item" data-answer="were" style="width: 80px;"></td>
+                <td><input type="text" class="quiz-item" data-answer="weren't" style="width: 80px;"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Fill in the Blanks</h2>
+        <div class="question">13. I <input type="text" class="quiz-item" data-answer="was"> at home yesterday. (私は昨日、家にいました。)</div>
+        <div class="question">14. We <input type="text" class="quiz-item" data-answer="were"> pen pals 7 years ago. (私たちは7年前、ペンフレンドでした。)</div>
+        <div class="question">15. <input type="text" class="quiz-item" data-answer="Was"> he your teacher last year? (彼は去年、あなたの先生でしたか？)</div>
+    </div>
+
+    <div class="section">
+        <h2>Error Correction (間違い探し)</h2>
+        <div class="question">16. We was students in 2015.<br>
+            → <input type="text" class="quiz-item" data-answer="We were students in 2015" style="width: 300px;">
+        </div>
+        <div class="question">17. Was you at the night market last night?<br>
+            → <input type="text" class="quiz-item" data-answer="Were you at the night market last night?" style="width: 300px;">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Challenge - Make a Question</h2>
+        <div class="question">18. A: <input type="text" class="quiz-item" data-answer="Were you happy yesterday?" style="width: 300px;"><br>
+            B: Yes, I was happy yesterday.
+        </div>
+        <div class="question">19. A: Who <input type="text" class="quiz-item" data-answer="was your pen pal?" style="width: 300px;"><br>
+            B: He was my pen pal.
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button onclick="checkAnswers()">Submit & Score</button>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const inputs = document.querySelectorAll('.quiz-item');
+        let correctCount = 0;
+        const totalItems = inputs.length;
+
+        inputs.forEach(input => {
+            const userAnswer = input.value.trim().toLowerCase().replace(/[.?]/g, "");
+            const correctAnswer = input.getAttribute('data-answer').toLowerCase().replace(/[.?]/g, "");
+            
+            // Xóa feedback cũ
+            const oldFeedback = input.parentNode.querySelector('.feedback');
+            if (oldFeedback) oldFeedback.remove();
+
+            if (userAnswer === correctAnswer) {
+                input.className = 'correct quiz-item';
+                correctCount++;
+            } else {
+                input.className = 'incorrect quiz-item';
+                const feedback = document.createElement('span');
+                feedback.className = 'feedback';
+                feedback.innerHTML = ` ❌ Correct: ${input.getAttribute('data-answer')}`;
+                input.parentNode.appendChild(feedback);
+            }
+        });
+
+        // Tính điểm trên thang điểm 10
+        const score = ((correctCount / totalItems) * 10).toFixed(1);
+        
+        // Hiển thị kết quả
+        const summary = document.getElementById('result-summary');
+        const scoreDisplay = document.getElementById('score-display');
+        const gradeMsg = document.getElementById('grade-msg');
+        
+        summary.style.display = 'block';
+        scoreDisplay.innerHTML = `Score: ${score} / 10`;
+        
+        if (score >= 9) {
+            gradeMsg.innerHTML = "Excellent! You're a pro! 🌟";
+            summary.style.borderColor = "#27ae60";
+        } else if (score >= 7) {
+            gradeMsg.innerHTML = "Good job! Keep it up! 👍";
+            summary.style.borderColor = "#3498db";
+        } else {
+            gradeMsg.innerHTML = "Keep practicing! You can do it! 💪";
+            summary.style.borderColor = "#e74c3c";
+        }
+
+        // Cuộn lên đầu để xem điểm
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
