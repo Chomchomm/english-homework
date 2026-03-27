@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Homework: Full Review Mode</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #d35400;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+            --section-tag: #34495e;
+            --section-who: #2980b9;
+            --score-blue: #ebf5fb;
+            --score-border: #3498db;
+        }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--bg); color: var(--primary); padding: 20px; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;}
+        
+        #score-dashboard { 
+            display: none; 
+            text-align: center; 
+            padding: 25px; 
+            margin-bottom: 30px; 
+            border-radius: 12px; 
+            border: 2px solid var(--score-border); 
+            background-color: var(--score-blue); 
+        }
+        #final-score { font-size: 32px; font-weight: bold; }
+
+        .main-title { font-size: 1.5em; text-align: center; margin: 30px 0 10px 0; padding: 10px; color: white; border-radius: 8px;}
+        .title-tag { background: var(--section-tag); }
+        .title-who { background: var(--section-who); }
+        .section-subtitle { font-weight: bold; color: var(--accent); margin: 15px 0 5px 0; display: block; text-decoration: underline; }
+        
+        .question { margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #f0f0f0; position: relative; }
+        select, input[type="text"] { padding: 8px; border: 2px solid #ccc; border-radius: 6px; font-size: 15px; transition: 0.3s; margin: 5px 0; }
+        
+        .answer-reveal { 
+            display: none; 
+            font-size: 0.9em; 
+            font-weight: bold; 
+            margin-top: 8px; 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+        }
+        .reveal-correct { color: var(--correct); background: #e8f5e9; }
+        .reveal-wrong { color: var(--wrong); background: #ffebee; border: 1px solid var(--wrong); }
+
+        .correct-input { border-color: var(--correct) !important; background-color: #f1f8f1; }
+        .wrong-input { border-color: var(--wrong) !important; background-color: #fff5f5; }
+
+        button#submit-btn { display: block; width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 8px; font-size: 20px; cursor: pointer; margin-top: 40px; font-weight: bold; }
+        .hidden { display: none; }
+        .hint-box { background: #fdf2e9; border-left: 5px solid var(--accent); padding: 15px; margin-top: 30px; border-radius: 5px; font-size: 0.9em;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📝 English Homework Review</h1>
+    
+    <div id="score-dashboard">
+        <div id="final-score"></div>
+        <div id="grade-msg" style="font-size: 20px; margin-top: 10px;"></div>
+        <button onclick="location.reload()" style="margin-top:15px; padding: 8px 20px; cursor:pointer; border-radius: 5px; border: 1px solid #ccc;">Try Again</button>
+    </div>
+
+    <div id="quiz-form">
+        <div class="main-title title-tag">Lesson 1: Tag Questions (付加疑問文)</div>
+        
+        <span class="section-subtitle">Part 1: Choose the correct "Mirror"</span>
+        <div class="question">1. Bridget is angry, <select class="quiz-item" data-answer="isn't she"><option value="">--?</option><option value="isn't she">isn't she</option><option value="doesn't she">doesn't she</option></select>?<div class="answer-reveal"></div></div>
+        <div class="question">2. You like toy cars, <select class="quiz-item" data-answer="don't you"><option value="">--?</option><option value="aren't you">aren't you</option><option value="don't you">don't you</option></select>?<div class="answer-reveal"></div></div>
+        <div class="question">3. Hector can speak Spanish, <select class="quiz-item" data-answer="can't he"><option value="">--?</option><option value="can't he">can't he</option><option value="doesn't he">doesn't he</option></select>?<div class="answer-reveal"></div></div>
+        <div class="question">4. Nick doesn't work, <select class="quiz-item" data-answer="does he"><option value="">--?</option><option value="is he">is he</option><option value="does he">does he</option></select>?<div class="answer-reveal"></div></div>
+        <div class="question">5. The girls have the post, <select class="quiz-item" data-answer="haven't they"><option value="">--?</option><option value="haven't they">haven't they</option><option value="don't they">don't they</option></select>?<div class="answer-reveal"></div></div>
+
+        <span class="section-subtitle">Part 2: Complete the Tag</span>
+        <div class="question">6. Annie has a dog, <input type="text" class="quiz-item" data-answer="hasn't she">?<div class="answer-reveal"></div></div>
+        <div class="question">7. The letter arrived yesterday, <input type="text" class="quiz-item" data-answer="didn't it">?<div class="answer-reveal"></div></div>
+        <div class="question">8. You are from Japan, <input type="text" class="quiz-item" data-answer="aren't you">?<div class="answer-reveal"></div></div>
+        <div class="question">9. We aren't late, <input type="text" class="quiz-item" data-answer="are we">?<div class="answer-reveal"></div></div>
+        <div class="question">10. Bridget and Annie live in London, <input type="text" class="quiz-item" data-answer="don't they">?<div class="answer-reveal"></div></div>
+
+        <span class="section-subtitle">Part 3: Translation (Tag)</span>
+        <div class="question">11. You are Nick, <input type="text" class="quiz-item" data-answer="aren't you">?<div class="answer-reveal"></div></div>
+        <div class="question">12. Hector can’t speak English, <input type="text" class="quiz-item" data-answer="can he">?<div class="answer-reveal"></div></div>
+        <div class="question">13. We have the post, <input type="text" class="quiz-item" data-answer="haven't we">?<div class="answer-reveal"></div></div>
+        <div class="question">14. This is very you, <input type="text" class="quiz-item" data-answer="isn't it">?<div class="answer-reveal"></div></div>
+
+        <div class="main-title title-who">Lesson 2: Relative Pronoun "WHO" (関係代名詞)</div>
+
+        <span class="section-subtitle">Part 4: Choose the correct "Action"</span>
+        <div class="question">15. I have a friend who <select class="quiz-item" data-answer="lives"><option value="">--?</option><option value="lives">lives</option><option value="live">live</option></select> in London.<div class="answer-reveal"></div></div>
+        <div class="question">16. They are the girls who <select class="quiz-item" data-answer="share"><option value="">--?</option><option value="share">share</option><option value="shares">shares</option></select> a flat.<div class="answer-reveal"></div></div>
+        <div class="question">17. Nick is the man who <select class="quiz-item" data-answer="borrowed"><option value="">--?</option><option value="borrowed">borrowed</option><option value="borrowing">borrowing</option></select> the milk.<div class="answer-reveal"></div></div>
+        <div class="question">18. Bridget is a person who <select class="quiz-item" data-answer="loves"><option value="">--?</option><option value="love">love</option><option value="loves">loves</option></select> exercise.<div class="answer-reveal"></div></div>
+        <div class="question">19. Do you know the boy who <select class="quiz-item" data-answer="is"><option value="">--?</option><option value="is">is</option><option value="are">are</option></select> from Argentina?<div class="answer-reveal"></div></div>
+
+        <span class="section-subtitle">Part 5: Combine two sentences</span>
+        <div class="question">20. Annie is a girl. She has a dog named Charlie.<br>→ <input type="text" style="width:90%" class="quiz-item" data-answer="annie is a girl who has a dog named charlie"><div class="answer-reveal"></div></div>
+        <div class="question">21. Hector is a guy. He comes from Argentina.<br>→ <input type="text" style="width:90%" class="quiz-item" data-answer="hector is a guy who comes from argentina"><div class="answer-reveal"></div></div>
+        <div class="question">22. I have a neighbour. He lives next door.<br>→ <input type="text" style="width:90%" class="quiz-item" data-answer="i have a neighbour who lives next door"><div class="answer-reveal"></div></div>
+        <div class="question">23. They are the students. They study Vietnamese.<br>→ <input type="text" style="width:90%" class="quiz-item" data-answer="they are the students who study vietnamese"><div class="answer-reveal"></div></div>
+        <div class="question">24. She is the teacher. She lives in Tainan.<br>→ <input type="text" style="width:90%" class="quiz-item" data-answer="she is the teacher who lives in tainan"><div class="answer-reveal"></div></div>
+
+        <span class="section-subtitle">Part 6: Translation (Who)</span>
+        <div class="question">25. 「私は、テニスが好きな人を知っています。」<br>I know a person <input type="text" style="width:60px" class="quiz-item" data-answer="who"> <input type="text" style="width:80px" class="quiz-item" data-answer="loves"> tennis.<div class="answer-reveal"></div></div>
+        <div class="question">26. 「彼は、毎日コーヒーを飲む男性です。」<br>He is a man <input type="text" style="width:60px" class="quiz-item" data-answer="who"> <input type="text" style="width:80px" class="quiz-item" data-answer="drinks"> coffee every day.<div class="answer-reveal"></div></div>
+        <div class="question">27. 「ロンドンに住んでいる女の子たちは、とても親切です。」<br>The girls <input type="text" style="width:60px" class="quiz-item" data-answer="who"> <input type="text" style="width:80px" class="quiz-item" data-answer="live"> in London are very kind.<div class="answer-reveal"></div></div>
+
+        <button id="submit-btn" onclick="checkAndReview()">Submit & Review Answers</button>
+    </div>
+
+    <div class="hint-box">
+        <b>💡 Teacher's Hint</b><br>
+        • Tag Question: (+) -> (-) / (-) -> (+). Mirror the verb!<br>
+        • WHO: Person + WHO + Verb. Check singular/plural!
+    </div>
+</div>
+
+<script>
+    function checkAndReview() {
+        const items = document.querySelectorAll('.quiz-item');
+        let correctCount = 0;
+        const totalItems = items.length;
+
+        items.forEach(item => {
+            const userVal = item.value.trim().toLowerCase().replace(/[.?!]$/,"");
+            const correctVal = item.getAttribute('data-answer').toLowerCase();
+            const isCorrect = (userVal === correctVal);
+            
+            const revealBox = item.closest('.question').querySelector('.answer-reveal');
+            revealBox.style.display = "block";
+
+            if (isCorrect) {
+                correctCount++;
+                item.classList.add('correct-input');
+                revealBox.innerHTML = "✓ Correct!";
+                revealBox.className = "answer-reveal reveal-correct";
+            } else {
+                item.classList.add('wrong-input');
+                revealBox.innerHTML = `✗ Wrong. Correct answer: <b>${item.getAttribute('data-answer')}</b>`;
+                revealBox.className = "answer-reveal reveal-wrong";
+            }
+            item.disabled = true;
+        });
+
+        const score = ((correctCount / totalItems) * 10).toFixed(1);
+        const dashboard = document.getElementById('score-dashboard');
+        const msgDisplay = document.getElementById('grade-msg');
+        
+        dashboard.style.display = 'block';
+        document.getElementById('final-score').innerText = `Your Score: ${score} / 10`;
+
+        if (score >= 9) {
+            msgDisplay.innerText = "Excellent! You're a pro! 🌟";
+            dashboard.style.borderColor = "#27ae60";
+        } else if (score >= 7) {
+            msgDisplay.innerText = "Good job! Keep it up! 👍";
+            dashboard.style.borderColor = "#3498db";
+        } else {
+            msgDisplay.innerText = "Keep practicing! You can do it! 💪";
+            dashboard.style.borderColor = "#e74c3c";
+        }
+        
+        document.getElementById('submit-btn').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
